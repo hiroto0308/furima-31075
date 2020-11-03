@@ -26,7 +26,6 @@
 
 | column            | type       | options           |
 | ----------------- | ---------- | ----------------- |
-| item_img          |            | null: false       |
 | product           | string     | null: false       |
 | introduction      | text       | null: false       |
 | category_id       | integer    | null: false       |
@@ -62,15 +61,15 @@
 
 ## addressesテーブル
 
-| column         | type       | options           |
-| -------------- | ---------- | ----------------- |
-| post_code      | string     | null: false       |
-| prefectures_id | integer    | null: false       |
-| city           | string     | null: false       |
-| address        | string     | null: false       |
-| buliding_name  | string     |                   |
-| phone          | string     | null: false       |
-| purchase       | references | foreign_key: true |
+| column           | type       | options           |
+| ---------------- | ---------- | ----------------- |
+| post_code        | string     | null: false       |
+| delivery_area_id | integer    | null: false       |
+| city             | string     | null: false       |
+| address          | string     | null: false       |
+| buliding_name    | string     |                   |
+| phone            | string     | null: false       |
+| purchase         | references | foreign_key: true |
 
 
 
