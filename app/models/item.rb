@@ -4,16 +4,16 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-  belongs_to :delivary_area
-  belongs_to :delivary_day
-  belongs_to :delivary_fee
+  belongs_to :delivery_area
+  belongs_to :delivery_days
+  belongs_to :delivery_fee
   belongs_to :item_condition
 
   with_options numericality: { other_than: 1 } do
     validates :category_id
-    validates :delivary_area_id
-    validates :delivary_day_id
-    validates :delivary_fee_id
+    validates :delivery_area_id
+    validates :delivery_days_id
+    validates :delivery_fee_id
     validates :item_condition_id
   end
 
