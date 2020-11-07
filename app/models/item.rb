@@ -16,4 +16,11 @@ class Item < ApplicationRecord
     validates :delivary_fee_id
     validates :item_condition_id
   end
+
+  with_options presence: true do
+    validates :product
+    validates :introduction
+    validates :price
+    validates :image
+  end 
 end
