@@ -19,7 +19,7 @@
         <%= @item.price %>
       </span>
       <span class="item-postage">
-        <%= DeliveryFee.find(@item.delivery_fee_id).name %>
+        <%= @item.delivery_fee.name %>
       </span>
     </div>
 
@@ -28,42 +28,43 @@
     <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
     <p class='or-text'>or</p>
     <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
-    <% else %>
+    <% elsif user_signed_in? %>
     <%# 商品が売れていない場合はこちらを表示しましょう %>
     <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
+    <% else %>
     <% end %>
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= @item.introduction %></span>
     </div>
     <table class="detail-table">
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= User.find(@item.id).nickname %></td>
+          <td class="detail-value"><%= @item.user.nickname %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= Category.find(@item.category_id).name %></td>
+          <td class="detail-value"><%= @item.category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= ItemCondition.find(@item.item_condition_id).name %></td>
+          <td class="detail-value"><%= @item.item_condition.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= DeliveryFee.find(@item.delivery_fee_id).name %></td>
+          <td class="detail-value"><%= @item.delivery_fee.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= DeliveryArea.find(@item.delivery_area_id).name %></td>
+          <td class="detail-value"><%= @item.delivery_area.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= DeliveryDays.find(@item.delivery_days_id).name %></td>
+          <td class="detail-value"><%= @item.delivery_days.name %></td>
         </tr>
       </tbody>
     </table>
@@ -102,7 +103,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <a href="#" class='another-item'><%= "商品のカテゴリー名" %>をもっと見る</a>
+  <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
 </div>
 
 <%= render "shared/footer" %>
