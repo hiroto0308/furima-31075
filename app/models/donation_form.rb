@@ -1,6 +1,6 @@
 class DonationForm
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :post_code, :delivery_area_id, :city, :address, :buliding_name, :phone, :purchase_id
+  attr_accessor :user_id, :item_id, :post_code, :delivery_area_id, :city, :address, :buliding_name, :phone, :purchase_id, :token
    
     with_options presence: true do
       validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
@@ -9,6 +9,7 @@ class DonationForm
       validates :phone, format: { with: /\A\d{11}\z/ }
       validates :user_id
       validates :item_id
+      validates :token
     end   
     validates :delivery_area_id, numericality: { other_than: 1 }
     
