@@ -73,9 +73,13 @@ RSpec.describe DonationForm, type: :model do
           @donation_form.valid?
           expect(@donation_form.errors.full_messages).to include("User can't be blank")
         end
+        it "tokenが空では登録できないこと" do
+          @donation_form.token = nil
+          @donation_form.valid?
+          expect(@order.errors.full_messages).to include("Token can't be blank")
+        end
       end  
     end  
 end
 end
 
-# expect(@donation_form.errors.full_messages).to include()
