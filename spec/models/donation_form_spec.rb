@@ -76,7 +76,7 @@ RSpec.describe DonationForm, type: :model do
         it "tokenが空では登録できないこと" do
           @donation_form.token = nil
           @donation_form.valid?
-          expect(@order.errors.full_messages).to include("Token can't be blank")
+          expect(@donation_form.errors.full_messages).to include("Token can't be blank")
         end
       end  
     end  
