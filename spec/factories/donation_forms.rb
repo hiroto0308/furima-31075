@@ -6,8 +6,8 @@ FactoryBot.define do
     address { '中洲１丁目' }
     buliding_name { '１−２' }
     phone { '09012345678' }
-    user_id { 2 }
-    item_id { 2 }
+    user_id { FactoryBot.create(:user).id }
+    item_id { FactoryBot.create(:item).id }
     token { 'tok_abcdefghijk00000000000000000' }
   end
 end
