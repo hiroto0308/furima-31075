@@ -24,6 +24,7 @@
     </div>
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
+  <% unless @item.purchase.present? %>  
     <% if  user_signed_in? && current_user.id == @item.user_id %>
     <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %>
     <p class='or-text'>or</p>
@@ -34,6 +35,7 @@
     <%# //商品が売れていない場合はこちらを表示しましょう %>
     <% else %>
     <% end %>
+  <% end %>  
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
